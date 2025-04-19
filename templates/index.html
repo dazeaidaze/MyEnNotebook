@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn Words</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            margin: 20px 0;
+        }
+        form {
+            display: inline-block;
+            text-align: left;
+            margin: 20px;
+        }
+        .button-container {
+            display: flex;
+            justify-content: space-between;
+            width: 200px;
+            margin-top: 20px;
+        }
+        .button-container button {
+            flex: 1;
+            margin: 0 5px;
+        }
+        .submit-container {
+            text-align: center; /* 居中对齐 */
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Learn Words with Pictures</h1>
+    <img src="{{ url_for('static', filename='images/' + image) }}" alt="Random Image">
+    <div class="button-container">
+        <button onclick="window.location.href='/new_image'">换一张图</button>
+    </div>
+    <form action="/learn" method="POST" onsubmit="return validateForm()">
+        <label for="word1">Enter a word:</label>
+        <input type="text" id="word1" name="word1"><br>
+        <label for="word2">Enter a word:</label>
+        <input type="text" id="word2" name="word2"><br>
+        <label for="word3">Enter a word:</label>
+        <input type="text" id="word3" name="word3"><br>
+        <label for="word4">Enter a word:</label>
+        <input type="text" id="word4" name="word4"><br>
+        <label for="word5">Enter a word:</label>
+        <input type="text" id="word5" name="word5"><br>
+        <div class="submit-container">
+            <button type="submit">提交</button>
+        </div>
+    </form>
+
+    <script>
+        function validateForm() {
+            let isValid = false;
+            for (let i = 1; i <= 5; i++) {
+                if (document.getElementById(`word${i}`).value.trim() !== '') {
+                    isValid = true;
+                    break;
+                }
+            }
+            if (!isValid) {
+                alert("Please enter at least one word.");
+                return false;
+            }
+            return true;
+        }
+    </script>
+</body>
+</html>

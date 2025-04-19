@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My Words</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+        }
+        .word-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin: 20px;
+        }
+        .word-container li {
+            list-style: none;
+            margin: 10px 0;
+        }
+        .word-container button {
+            margin-left: 10px;
+        }
+        .button-container {
+            margin-top: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>My Saved Words</h1>
+    <ul class="word-container">
+        {% for word in words %}
+            <li>
+                <strong>{{ word[0] }}</strong>
+                <button onclick="speak('{{ word[0] }}')">Listen</button>
+            </li>
+        {% endfor %}
+    </ul>
+    <div class="button-container">
+        <button onclick="window.location.href='/'">首页</button>
+        <button onclick="window.location.href='/clear_words'">清空单词</button>
+
+    </div>
+    <script>
+        function speak(word) {
+            const msg = new SpeechSynthesisUtterance(word);
+            window.speechSynthesis.speak(msg);
+        }
+    </script>
+</body>
+</html>
