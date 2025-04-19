@@ -16,7 +16,7 @@
         }
         img {
             max-width: 100%;
-            height: auto;
+            max-height: 450px; /* 限制图片高度 */
             margin: 20px 0;
         }
         form {
@@ -41,7 +41,7 @@
     </style>
 </head>
 <body>
-    <h1>Learn Words with Pictures</h1>
+    <h2>Learn Words with Pictures</h2>
     <img src="{{ url_for('static', filename='images/' + image) }}" alt="Random Image">
     <div class="button-container">
         <button onclick="window.location.href='/new_image'">换一张图</button>

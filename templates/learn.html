@@ -13,7 +13,7 @@
         }
         img {
             max-width: 100%;
-            height: auto;
+            max-height: 450px; /* 限制图片高度 */
             margin: 20px 0;
         }
         .word-container {
@@ -35,7 +35,7 @@
     </style>
 </head>
 <body>
-    <h1>You entered the following words:</h1>
+    <h2>You entered the following words:</h2>
     <img src="{{ url_for('static', filename='images/' + image) }}" alt="Random Image">
     <ul class="word-container">
         {% for word in words %}
