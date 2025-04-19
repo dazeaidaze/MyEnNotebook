@@ -92,4 +92,4 @@ def clear_words():
     return redirect(url_for('index'))  # 重定向到首页
 
 if __name__ == '__main__':
-    app.run(debug=True, port=5001)
+    app.run(debug=True, port=5002)
